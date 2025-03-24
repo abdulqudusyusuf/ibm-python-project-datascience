@@ -2,7 +2,7 @@
 
 ## Table of Content
 - [Project Overview](#project-overview)
-- [Data Source](#data-source)
+- [Prerequisites](#prerequisites)
 - [Tools Used](#tools-used)
 - [Data Cleaning & Preparation](#data-cleaning--preparation)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
@@ -15,3 +15,24 @@ In this project, we will take on the role of a Data Scientist or Data Analyst wo
 
 ### Prerequisites
 Since this project involves working with Python, it is essential to have the necessary libraries installed for extracting and processing stock data. The specific libraries required will depend on the development environment used to run the code. Ensure that you have installed all relevant dependencies before proceeding.
+
+```python
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import yfinance as yf
+
+# Fetch Tesla stock data
+tesla = yf.Ticker("TSLA")
+tesla_df = tesla.history(period="5y")
+
+# Plot Tesla stock price
+plt.figure(figsize=(12,6))
+plt.plot(tesla_df.index, tesla_df["Close"], label="Tesla Closing Price", color='blue')
+plt.xlabel("Date")
+plt.ylabel("Closing Price (USD)")
+plt.title("Tesla Stock Price Over Time")
+plt.legend()
+plt.show()
+
