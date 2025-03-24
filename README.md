@@ -89,6 +89,6 @@ tesla_data.reset_index(inplace=True)
 # Display the first five rows of the dataset
 tesla_data.head()
 ```
+![tab1](https://github.com/user-attachments/assets/1f929d17-e9d6-4a72-89e7-f776caade77b)
 
-![tab1](https://github.com/user-attachments/assets/b14c0c07-592d-4a4a-82e1-06f992c98d54)
 
