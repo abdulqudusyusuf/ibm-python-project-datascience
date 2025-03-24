@@ -1,2 +1,2 @@
-# python-datascience
-IBM Python Project for Data Science 
+# ibm-python-datascience 
+Hands-on Lab Project: Analyzing Historical Stock/Revenue Data and Building a Dashboard
