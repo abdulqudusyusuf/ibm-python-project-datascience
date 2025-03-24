@@ -27,8 +27,6 @@ Since this project involves working with Python, it is essential to have the nec
 !pip install nbformat>=4.2.0
 
 
-
-```python
 import yfinance as yf
 import pandas as pd
 import requests
@@ -46,5 +44,50 @@ The function requires:
 - The **name of the stock** as a string.
 
 The function is defined as follows:
+
+```python
+def make_graph(stock_data, revenue_data, stock):
+    fig = make_subplots(rows=2, cols=1, shared_xaxes=True, subplot_titles=("Historical Share Price", "Historical Revenue"), vertical_spacing = .3)
+    stock_data_specific = stock_data[stock_data.Date <= '2021--06-14']
+    revenue_data_specific = revenue_data[revenue_data.Date <= '2021-04-30']
+    fig.add_trace(go.Scatter(x=pd.to_datetime(stock_data_specific.Date, infer_datetime_format=True), y=stock_data_specific.Close.astype("float"), name="Share Price"), row=1, col=1)
+    fig.add_trace(go.Scatter(x=pd.to_datetime(revenue_data_specific.Date, infer_datetime_format=True), y=revenue_data_specific.Revenue.astype("float"), name="Revenue"), row=2, col=1)
+    fig.update_xaxes(title_text="Date", row=1, col=1)
+    fig.update_xaxes(title_text="Date", row=2, col=1)
+    fig.update_yaxes(title_text="Price ($US)", row=1, col=1)
+    fig.update_yaxes(title_text="Revenue ($US Millions)", row=2, col=1)
+    fig.update_layout(showlegend=False,
+    height=900,
+    title=stock,
+    xaxis_rangeslider_visible=True)
+    fig.show()
+
+```
+
+### Step 1: 
+#### Use ‘yfinance’ library to Extract Stock Data
+
+To extract stock data for Tesla (ticker symbol: **TSLA**), we will use the `Ticker` function to create a ticker object:  
+
+```python
+tesla = yf.Ticker("TSLA")
+```
+
+Using the `Ticker` object, we can extract Tesla's historical stock data with the `history` function. The `period="max"` parameter ensures that we retrieve the maximum available historical data.
+
+```python
+# Extract historical stock data for Tesla
+tesla_data = tesla.history(period="max")
+```
+
+To properly structure the extracted data, we reset the index of the `tesla_data` DataFrame and display the first five rows. This ensures that the **Date** column is properly formatted and can be used for further analysis.
+
+```python
+# Reset the index to structure the DataFrame properly
+tesla_data.reset_index(inplace=True)
+
+# Display the first five rows of the dataset
+tesla_data.head()
+```
 
 
