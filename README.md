@@ -17,22 +17,34 @@ In this project, we will take on the role of a Data Scientist or Data Analyst wo
 Since this project involves working with Python, it is essential to have the necessary libraries installed for extracting and processing stock data. The specific libraries required will depend on the development environment used to run the code. Ensure that you have installed all relevant dependencies before proceeding.
 
 ```python
-# Import necessary libraries
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+#!pip install pandas==1.3.3
+#!pip install requests==2.26.0
+#!pip install plotly==5.3.1
+!pip install yfinance==0.1.67
+!mamba install bs4==4.10.0 -y
+!mamba install html5lib==1.1 -y
+!pip install lxml==4.6.4
+!pip install nbformat>=4.2.0
+
+
+
+```python
 import yfinance as yf
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from IPython.display import display
 
-# Fetch Tesla stock data
-tesla = yf.Ticker("TSLA")
-tesla_df = tesla.history(period="5y")
+```
+In addition to the required Python libraries, we will use a custom function to visualize the stock data. While understanding the inner workings of the function is not necessary, it is important to ensure that the correct inputs are provided.
 
-# Plot Tesla stock price
-plt.figure(figsize=(12,6))
-plt.plot(tesla_df.index, tesla_df["Close"], label="Tesla Closing Price", color='blue')
-plt.xlabel("Date")
-plt.ylabel("Closing Price (USD)")
-plt.title("Tesla Stock Price Over Time")
-plt.legend()
-plt.show()
+The function requires:
+- A **data frame** containing historical stock price data, which must include the columns `Date` and `Close`.
+- A **data frame** containing historical revenue data, which must include the columns `Date` and `Revenue`.
+- The **name of the stock** as a string.
+
+The function is defined as follows:
+
 
