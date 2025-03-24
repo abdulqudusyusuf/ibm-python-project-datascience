@@ -3,12 +3,9 @@
 ## Table of Content
 - [Project Overview](#project-overview)
 - [Prerequisites](#prerequisites)
-- [Tools Used](#tools-used)
-- [Data Cleaning & Preparation](#data-cleaning--preparation)
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Data Mining & Predictive Modeling](#data-mining--predictive-modeling)
-- [Recommendations](#recommendations)
-- [Limitations](#limitations)
+- [Step 1](#step-1)
+- [Step 2](#step-2)
+- [Step 3](#step-3)
 
 ### Project Overview
 In this project, we will take on the role of a Data Scientist or Data Analyst working for a newly established investment firm that assists clients in making informed stock investments. Our primary objective is to extract financial data—such as historical stock prices and annual revenue reports—using Python libraries and web scraping techniques. We will then analyze and visualize this data in a dashboard to identify patterns and trends, focusing on Tesla as our case study.
@@ -144,4 +141,21 @@ tesla_revenue.tail()
 ### Step 3: 
 #### Plot Tesla Stock Graph
 
+### Visualizing Tesla Stock Data  
 
+To analyze Tesla’s stock performance alongside its revenue trends, we will use the `make_graph` function defined in the prerequisites section. This function takes three parameters:  
+
+- `tesla_data`: The DataFrame containing Tesla's historical stock prices.  
+- `tesla_revenue`: The DataFrame containing Tesla's revenue data.  
+- `'Tesla'`: The stock name as a string.  
+
+By calling the function with these inputs, we generate a visualization that highlights Tesla's stock price movements and revenue trends over time.
+
+```python
+make_graph(tesla_data, tesla_revenue, 'Tesla')
+```
+![tab3](https://github.com/user-attachments/assets/dd74a8cb-4f93-48f9-aa2f-bca96ecf90de)
+
+ 
+This project is *originally based on the* **IBM Python Project for Data Science** *course on Coursera.* *For more details, visit:*  
+[*IBM Python Project for Data Science*](https://www.coursera.org/learn/python-project-for-data-science)  
