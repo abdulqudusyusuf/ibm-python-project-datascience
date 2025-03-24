@@ -90,4 +90,5 @@ tesla_data.reset_index(inplace=True)
 tesla_data.head()
 ```
 
+![tab1](https://github.com/user-attachments/assets/b14c0c07-592d-4a4a-82e1-06f992c98d54)
 
