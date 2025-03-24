@@ -1,2 +1,2 @@
-# Hands-on Lab Project: Analyzing Historical Stock/Revenue Data and Building a Dashboard in Python
+# Hands-on Lab Project: Extracting and Visualizing Stock Data
 
