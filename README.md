@@ -127,7 +127,7 @@ for row in soup.find("tbody").find_all('tr'):
     tesla_revenue = tesla_revenue.append({"Date":date, "Revenue":revenue}, ignore_index=True)
 ```
 
-Once the data is extracted, we will clean the **Revenue** column by removing commas and dollar signs to ensure proper formatting. Finally, we will display the first 5 rows of the `tesla_revenue` DataFrame to verify the data.
+Once the data is extracted, we will clean the **Revenue** column by removing commas and dollar signs to ensure proper formatting. Finally, we will display the last 5 rows of the `tesla_revenue` DataFrame to verify the data.
 
 ```python
 tesla_revenue["Revenue"] = tesla_revenue['Revenue'].str.replace(',|\$',"")
@@ -136,7 +136,12 @@ tesla_revenue["Revenue"] = tesla_revenue['Revenue'].str.replace(',|\$',"")
 #tesla_revenue.dropna(inplace=True)
 #tesla_revenue = tesla_revenue[tesla_revenue['Revenue'] != ""]
 
-tesla_revenue.head()
+tesla_revenue.tail()
 ```
+
+![tab2](https://github.com/user-attachments/assets/8206a872-a159-4a5b-84a9-5bd03c504048)
+
+### Step 3: 
+#### Plot Tesla Stock Graph
 
 
