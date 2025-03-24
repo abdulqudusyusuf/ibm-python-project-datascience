@@ -91,4 +91,52 @@ tesla_data.head()
 ```
 ![tab1](https://github.com/user-attachments/assets/1f929d17-e9d6-4a72-89e7-f776caade77b)
 
+### Step 2: 
+#### Use Web Scraping to Extract Tesla Revenue Data
+
+Use the requests library to download the webpage "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0220EN-SkillsNetwork/labs/project/revenue.htm"
+
+Save the text of the response as a variable named `html_data`.
+
+```python
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0220EN-SkillsNetwork/labs/project/revenue.htm"
+
+# Send an HTTP request and save the response text
+html_data = requests.get(url).text
+```
+
+Parse the HTML data using `beautiful_soup`.
+
+```python
+soup = BeautifulSoup(html_data, 'html5lib')
+```
+
+### Extracting Tesla Revenue Data Using `BeautifulSoup`  
+
+To extract Tesla's revenue data, we will use `BeautifulSoup` to parse the HTML content and locate the relevant table. The extracted data will be stored in a DataFrame named `tesla_revenue`, with two columns: **Date** and **Revenue**.  
+
+```python
+#We create an empty dataframe
+tesla_revenue = pd.DataFrame(columns=["Date", "Revenue"])
+
+#We extract the desired data from the 'soup' object and save it in the dataframe
+for row in soup.find("tbody").find_all('tr'):
+    col = row.find_all("td")
+    date = col[0].text
+    revenue = col[1].text
+    tesla_revenue = tesla_revenue.append({"Date":date, "Revenue":revenue}, ignore_index=True)
+```
+
+Once the data is extracted, we will clean the **Revenue** column by removing commas and dollar signs to ensure proper formatting. Finally, we will display the first 5 rows of the `tesla_revenue` DataFrame to verify the data.
+
+```python
+tesla_revenue["Revenue"] = tesla_revenue['Revenue'].str.replace(',|\$',"")
+
+#OPTIONAL: Execute the following lines to remove an null or empty strings in the Revenue column.
+#tesla_revenue.dropna(inplace=True)
+#tesla_revenue = tesla_revenue[tesla_revenue['Revenue'] != ""]
+
+tesla_revenue.head()
+```
+
 
