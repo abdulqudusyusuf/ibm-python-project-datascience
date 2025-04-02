@@ -1,4 +1,4 @@
-# Hands-on Lab Project: Extracting and Visualizing Stock Data
+# Extracting and Visualizing Stock Data
 
 ## Table of Content
 - [Project Overview](#project-overview)
